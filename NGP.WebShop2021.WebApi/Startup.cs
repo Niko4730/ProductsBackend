@@ -31,6 +31,15 @@ namespace NGP.WebShop2021.WebApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "NGP.WebShop2021.WebApi", Version = "v1"});
             });
+            services.AddCors(
+                opt => opt
+                    .AddPolicy("dev-policy", policy =>
+                    {
+                        policy
+                            .AllowAnyOrigin()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +50,7 @@ namespace NGP.WebShop2021.WebApi
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NGP.WebShop2021.WebApi v1"));
+                app.UseCors("dev-policy");
             }
 
             app.UseHttpsRedirection();
