@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace NGP.WebShop2021.WebApi.Controllers.Dtos
+﻿namespace NGP.WebShop2021.WebApi.Dtos
 {
     public class ProductDto
     {

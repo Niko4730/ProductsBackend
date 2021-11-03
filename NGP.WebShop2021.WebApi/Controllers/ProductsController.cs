@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NGP.WebShop2021.WebApi.Controllers.Dtos;
+using NGP.WebShop2021.WebApi.Dtos;
 
 namespace NGP.WebShop2021.WebApi.Controllers
 {
@@ -16,7 +16,14 @@ namespace NGP.WebShop2021.WebApi.Controllers
 
         public ActionResult<ProductsDto> ReadAll()
         {
-            
-        }
+            var dto = new ProductsDto();
+            dto.List = new List<ProductDto>
+            {
+                new ProductDto() {Id = 1, Name = "Ko"},
+                new ProductDto() {Id = 2, Name = "Kat"},
+                new ProductDto() {Id = 3, Name = "Hund"}
+            };
+            return Ok(dto);
+        } 
     }
 }
