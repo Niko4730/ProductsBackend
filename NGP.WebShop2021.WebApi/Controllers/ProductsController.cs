@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NGP.WebShop2021.Core.IServices;
 using NGP.WebShop2021.WebApi.Dtos;
 
 namespace NGP.WebShop2021.WebApi.Controllers
@@ -12,18 +13,34 @@ namespace NGP.WebShop2021.WebApi.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
+        private readonly IProductService _productService;
+
+        public ProductsController(IProductService productService)
+        {
+            _productService = productService;
+        }
         [HttpGet]
 
         public ActionResult<ProductsDto> ReadAll()
         {
-            var dto = new ProductsDto();
-            dto.List = new List<ProductDto>
+            try
             {
-                new ProductDto() {Id = 1, Name = "Ko"},
-                new ProductDto() {Id = 2, Name = "Kat"},
-                new ProductDto() {Id = 3, Name = "Hund"}
-            };
-            return Ok(dto);
+                var products = _productService.GetAll()
+                    .Select(p => new ProductDto
+                    {
+                        Id = p.Id,
+                        Name = p.Name
+                    })
+                    .ToList();
+                return Ok(new ProductsDto
+                {
+                    List = products
+                });
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         } 
     }
 }

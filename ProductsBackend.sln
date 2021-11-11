@@ -16,6 +16,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NGP.ProductsBackend.Domain"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NGP.ProductsBackend.Domain.Test", "NGP.ProductsBackend.Domain.Test\NGP.ProductsBackend.Domain.Test.csproj", "{65D105D3-2AD5-42EC-B026-BF861C0BC87E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{EEEE8F41-B267-4534-9F82-C9EF4CFD2D28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NGP.ProductsBackend.DataAccess", "NGP.ProductsBackend.DataAccess\NGP.ProductsBackend.DataAccess.csproj", "{CAEB9B57-C289-4B55-812C-1CD128B18030}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,7 @@ Global
 		{1423AE93-C584-4CBE-9D42-FBC28AD8BB68} = {861F59B2-F338-4762-97CC-4336FDEEA69D}
 		{B915613B-8EB0-46F8-B30E-F6FD80AC0362} = {2D46E3D7-FB87-4A74-91A8-E238B2B56E66}
 		{65D105D3-2AD5-42EC-B026-BF861C0BC87E} = {861F59B2-F338-4762-97CC-4336FDEEA69D}
+		{CAEB9B57-C289-4B55-812C-1CD128B18030} = {EEEE8F41-B267-4534-9F82-C9EF4CFD2D28}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{246C1050-9356-4938-8D86-72845F55E8F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -49,5 +54,9 @@ Global
 		{65D105D3-2AD5-42EC-B026-BF861C0BC87E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65D105D3-2AD5-42EC-B026-BF861C0BC87E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65D105D3-2AD5-42EC-B026-BF861C0BC87E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAEB9B57-C289-4B55-812C-1CD128B18030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAEB9B57-C289-4B55-812C-1CD128B18030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAEB9B57-C289-4B55-812C-1CD128B18030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAEB9B57-C289-4B55-812C-1CD128B18030}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
