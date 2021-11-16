@@ -64,15 +64,11 @@ namespace NGP.WebShop2021.WebApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NGP.WebShop2021.WebApi v1"));
                 app.UseCors("dev-policy");
-                ctx.Database.EnsureDeleted();
-                ctx.Database.EnsureCreated();
-                ctx.Products.AddRange(new List<ProductEntity>
-                {
-                    new ProductEntity{Name = "Product1"},
-                    new ProductEntity{Name = "Product2"},
-                    new ProductEntity{Name = "Product3"}
-                });
-                ctx.SaveChanges();
+                new DbSeeder(ctx).SeedDevelopment();
+            }
+            else
+            {
+                new DbSeeder(ctx).SeedProduction();
             }
 
             app.UseHttpsRedirection();
