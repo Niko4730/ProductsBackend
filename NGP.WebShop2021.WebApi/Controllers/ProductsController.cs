@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 using NGP.WebShop2021.Core.IServices;
 using NGP.WebShop2021.Core.Models;
 using NGP.WebShop2021.WebApi.Dtos;
@@ -22,16 +23,18 @@ namespace NGP.WebShop2021.WebApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult<ProductsDto> Create(int id, string name)
+        public ActionResult<ProductDto> Add(int id, string name)
         {
             try
             {
-                return Ok(_productService.Create(id, name));
+                Product p = _productService.Create(id, name);
+                return Ok(new ProductDto {Id = p.Id, Name = name});
             }
             catch (Exception e)
             {
-                return StatusCode(500, "You cant create that...");
+                return StatusCode(500, "U suck");
             }
+
         }
 
         [HttpGet]
@@ -59,11 +62,12 @@ namespace NGP.WebShop2021.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<ProductsDto> ReadById(int id)
+        public ActionResult<ProductDto> ReadById(int id)
         {
             try
             {
-                return Ok(_productService.GetById(id));
+                Product p = _productService.GetById(id);
+                return Ok(new ProductDto {Id = p.Id});
             }
             catch (Exception e)
             {
@@ -72,11 +76,12 @@ namespace NGP.WebShop2021.WebApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<ProductsDto> Delete(int id)
+        public ActionResult<ProductDto> Delete(int id)
         {
             try
             {
-                return Ok(_productService.Delete(id));
+                Product p = _productService.Delete(id);
+                return Ok(new ProductDto {Id = p.Id});
             }
             catch (Exception e)
             {
@@ -84,8 +89,9 @@ namespace NGP.WebShop2021.WebApi.Controllers
             }
         }
 
-        [HttpPut("{id")]
-        public ActionResult<ProductsDto> Update(int id, [FromBody]Product product)
+        [HttpPut("{id}")]
+
+    public ActionResult<ProductDto> Update(int id, [FromBody]Product product)
         {
             try
             {
@@ -94,8 +100,9 @@ namespace NGP.WebShop2021.WebApi.Controllers
                     return BadRequest("Id is invalid");
                 }
                 product.Id = id;
+                Product p = _productService.Update(id, product);
                 
-                return Ok(_productService.Update(id, product));
+                return Ok(new ProductDto{Id = p.Id, Name = p.Name});
             }
             catch (Exception e)
             {
