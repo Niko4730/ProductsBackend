@@ -23,12 +23,12 @@ namespace NGP.WebShop2021.WebApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult<ProductDto> Add(int id, string name)
+        public ActionResult<ProductDto> Add([FromBody]Product product)
         {
             try
             {
-                Product p = _productService.Create(id, name);
-                return Ok(new ProductDto {Id = p.Id, Name = name});
+                Product p = _productService.Create(product.Id, product.Name);
+                return Ok(new ProductDto {Id = p.Id, Name = p.Name});
             }
             catch (Exception e)
             {
