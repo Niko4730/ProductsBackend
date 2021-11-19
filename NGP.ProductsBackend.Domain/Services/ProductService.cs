@@ -25,5 +25,25 @@ namespace NGP.ProductsBackend.Domain.Services
         {
             return _productRepository.ReadAll();
         }
+
+        public Product GetById(int id)
+        {
+            return _productRepository.ReadById(id);
+        }
+
+        public Product Create(int id, string name)
+        {
+            return _productRepository.Create(id, name);
+        }
+
+        public Product Delete(int id)
+        {
+            return _productRepository.Delete(id);
+        }
+
+        public Product Update(int id, Product product)
+        {
+            return _productRepository.Update(id, product);
+        }
     }
 }
